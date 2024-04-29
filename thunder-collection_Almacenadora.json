@@ -1,0 +1,79 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Almacenadora",
+    "collectionId": "7cc3e3ee-5eea-435a-afe8-cd8f82e70cd8",
+    "dateExported": "2024-04-29T01:53:17.155Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "53423412-69ac-42a8-b915-a8ef8bb3207c",
+            "name": "Usuarios",
+            "containerId": "",
+            "created": "2024-04-29T01:49:30.514Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "6994651f-cf02-4dbf-abfc-6a5a83bdf7b6",
+            "colId": "7cc3e3ee-5eea-435a-afe8-cd8f82e70cd8",
+            "containerId": "53423412-69ac-42a8-b915-a8ef8bb3207c",
+            "name": "Registrar",
+            "url": "localhost:2880/users/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-29T01:49:37.336Z",
+            "modified": "2024-04-29T01:51:11.085Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "rparedes"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345"
+                    },
+                    {
+                        "name": "name",
+                        "value": "Rubén"
+                    },
+                    {
+                        "name": "lastname",
+                        "value": "Paredes"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "7b986785-7db7-4a0c-8150-2b8dce66261e",
+            "colId": "7cc3e3ee-5eea-435a-afe8-cd8f82e70cd8",
+            "containerId": "53423412-69ac-42a8-b915-a8ef8bb3207c",
+            "name": "Logear",
+            "url": "localhost:2880/users/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-29T01:49:46.049Z",
+            "modified": "2024-04-29T01:53:09.222Z",
+            "headers": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "rparedes"
+                    },
+                    {
+                        "name": "password",
+                        "value": "12345"
+                    }
+                ]
+            }
+        }
+    ],
+    "ref": "vlhjX__P1YCb5-fkPkgqt7PzQgZkl4106ZqOt25RJvowByQIYca7a3nIDDWzS4DNu8lSe0C3aSIpieX2gqaAyw"
+}
