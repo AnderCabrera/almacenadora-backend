@@ -4,6 +4,7 @@ import helmet from 'helmet'
 import morgan from 'morgan'
 import { config } from 'dotenv'
 import userRoutes from '../src/user/user.routes.js'
+import taskRouter from '../src/task/task.routers.js'
 
 const app = express()
 config()
@@ -17,6 +18,7 @@ app.use(morgan('dev'))
 
 //Rutas controladores
 app.use('/users', userRoutes)
+app.use('/stack',taskRouter)
 
 export const initServer = ()=>{
     app.listen(port)
