@@ -1,26 +1,26 @@
-import express from 'express'
-import cors from 'cors'
-import helmet from 'helmet'
-import morgan from 'morgan'
-import { config } from 'dotenv'
-import userRoutes from '../src/user/user.routes.js'
-import taskRouter from '../src/task/task.routers.js'
+import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { config } from 'dotenv';
+import userRoutes from '../src/user/user.routes.js';
+import taskRouter from '../src/task/task.routers.js';
 
-const app = express()
-config()
-const port = process.env.PORT || 3200
+const app = express();
+config();
+const port = process.env.PORT || 3200;
 
-app.use(express.urlencoded({extended: false}))
-app.use(express.json())
-app.use(cors())
-app.use(helmet())
-app.use(morgan('dev'))
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cors());
+app.use(helmet());
+app.use(morgan('dev'));
 
 //Rutas controladores
-app.use('/users', userRoutes)
-app.use('/stack',taskRouter)
+app.use('/users', userRoutes);
+app.use('/stack', taskRouter);
 
-export const initServer = ()=>{
-    app.listen(port)
-    console.log(`Server HTTP running in port ${port}`)
-}
+export const initServer = () => {
+  app.listen(port);
+  console.log(`Server HTTP running in port ${port}`);
+};
