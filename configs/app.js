@@ -6,6 +6,10 @@ import { config } from 'dotenv';
 import userRoutes from '../src/user/user.routes.js';
 import taskRouter from '../src/task/task.routers.js';
 
+// models
+import userModel from '../src/user/user.model.js';
+import taskModel from '../src/task/task.model.js';
+
 const app = express();
 config();
 const port = process.env.PORT || 3200;
@@ -20,7 +24,30 @@ app.use(morgan('dev'));
 app.use('/users', userRoutes);
 app.use('/stack', taskRouter);
 
-export const initServer = () => {
+export const initServer = async () => {
+  const users = await userModel.find({});
+  const tasks = await taskModel.find({});
+
+  if (users.length === 0) {
+    await userModel.create({
+      username: 'admin',
+      password: 'admin',
+      name: 'admin',
+      lastname: 'admin',
+    });
+  }
+
+  if (tasks.length === 0) {
+    await taskModel.create({
+      taskName: 'task 1',
+      taskDescription: 'task 1',
+      dateStart: new Date(),
+      dateEnd: new Date(),
+      taskStatus: 'COMPLETE',
+      user: users[0]._id,
+    });
+  }
+
   app.listen(port);
   console.log(`Server HTTP running in port ${port}`);
 };
