@@ -1,3 +1,4 @@
+import { populate } from 'dotenv';
 import taskModel from './task.model.js';
 
 export const addTask = async (req, res) => {
@@ -14,7 +15,11 @@ export const addTask = async (req, res) => {
 };
 export const getTask = async (req, res) => {
   try {
-    let task = await taskModel.find().populate('user', ['name', 'lastname']);
+    let task = await taskModel.find({}).populate({
+      path: 'user',
+      select: '-_id',
+    });
+
     return res.send(task);
   } catch (err) {
     console.error(err);

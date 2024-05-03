@@ -1,33 +1,36 @@
 import { model, Schema } from 'mongoose';
 
-const taskSchema = Schema({
-  taskName: {
-    type: String,
-    required: true,
+const taskSchema = Schema(
+  {
+    task_name: {
+      type: String,
+      required: true,
+    },
+    task_description: {
+      type: String,
+      required: true,
+    },
+    date_start: {
+      type: Date,
+      required: true,
+    },
+    date_end: {
+      type: Date,
+      required: true,
+    },
+    task_status: {
+      type: Boolean,
+      required: true,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
+    },
   },
-  taskDescription: {
-    type: String,
-    required: true,
+  {
+    versionKey: false,
   },
-  dateStart: {
-    type: Date,
-    required: true,
-  },
-  dateEnd: {
-    type: Date,
-    required: true,
-  },
-  taskStatus: {
-    type: String,
-    uppercase: true,
-    enum: ['COMPLETE', 'INCOMPLETE'],
-    required: true,
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'user',
-    required: true,
-  },
-});
+);
 
 export default model('task', taskSchema);

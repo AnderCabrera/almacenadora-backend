@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { config } from 'dotenv';
+import { encrypt } from '../src/utils/validator.js';
 import userRoutes from '../src/user/user.routes.js';
 import taskRouter from '../src/task/task.routers.js';
 
@@ -22,7 +23,7 @@ app.use(morgan('dev'));
 
 //Rutas controladores
 app.use('/users', userRoutes);
-app.use('/stack', taskRouter);
+app.use('/tasks', taskRouter);
 
 export const initServer = async () => {
   const users = await userModel.find({});
@@ -31,7 +32,7 @@ export const initServer = async () => {
   if (users.length === 0) {
     await userModel.create({
       username: 'admin',
-      password: 'admin',
+      password: await encrypt('admin'),
       name: 'admin',
       lastname: 'admin',
     });
@@ -39,11 +40,11 @@ export const initServer = async () => {
 
   if (tasks.length === 0) {
     await taskModel.create({
-      taskName: 'task 1',
-      taskDescription: 'task 1',
-      dateStart: new Date(),
-      dateEnd: new Date(),
-      taskStatus: 'COMPLETE',
+      task_name: 'Tarea 1',
+      task_description: 'Descripcion de tarea 1',
+      date_start: new Date(),
+      date_end: new Date(),
+      task_status: false,
       user: users[0]._id,
     });
   }

@@ -4,7 +4,7 @@ import { validateJwt } from '../middlewares/validate-jwt.js';
 const api = Router();
 
 api.post('/addTask', [validateJwt], addTask);
-api.get('/getTask', [validateJwt], getTask);
+api.get('/getTask', [], getTask);
 api.put('/updateTask/:id', [validateJwt], updateTask);
 api.delete('/deleteTask/:id', [validateJwt], deleteTask);
 export default api;
