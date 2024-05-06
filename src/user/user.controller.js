@@ -28,7 +28,13 @@ export const login = async (req, res) => {
         name: user.name,
         lastname: user.lastname,
       };
+
       let token = await generateJwt(loggedUser);
+
+      // set header
+      res.set('XDDD', 'SOM-VALUE');
+      res.set('Authorization', `Bearer ${token}`);
+
       return res.status(200).send({
         message: `Bienvenido ${loggedUser.username}`,
         loggedUser,

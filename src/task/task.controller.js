@@ -27,6 +27,21 @@ export const getTask = async (req, res) => {
   }
 };
 
+export const getSingleTask = async (req, res) => {
+  try {
+    let { id } = req.params;
+    let task = await taskModel.findOne({ _id: id }).populate({
+      path: 'user',
+      select: '-_id',
+    });
+    if (!task) return res.status(404).send({ message: 'Task not founded' });
+    return res.send(task);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send({ message: 'Error listing task' });
+  }
+}
+
 export const updateTask = async (req, res) => {
   try {
     let data = req.body;
